@@ -30,7 +30,7 @@ export default function StartForm() {
           control={form.control}
           name="task"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="w-full mx-auto max-w-xs">
               <FormLabel>Task</FormLabel>
               <FormControl>
                 <Input
@@ -42,9 +42,9 @@ export default function StartForm() {
             </FormItem>
           )}
         />
-        <p className="mt-10 text-center text-sm font-medium text-gray-400">Nesse ciclo foque por 25 min</p>
+        <p className="mt-10 text-center text-sm font-medium text-gray-300">Nesse ciclo foque por 25 min</p>
         <div className="mt-10">
-          <p className="text-center text-sm font-medium text-gray-400">Ciclos</p>
+          <p className="text-center text-sm font-medium text-gray-300">Ciclos</p>
           <div className="mt-4 flex justify-center items-center gap-2">
             <div className="size-4 bg-green-800 rounded-full"></div>
             <div className="size-4 bg-yellow-600 rounded-full"></div>
