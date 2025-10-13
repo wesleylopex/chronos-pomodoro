@@ -42,17 +42,17 @@ export default function StartForm() {
             </FormItem>
           )}
         />
-        <p className="mt-10 text-center text-sm font-medium text-gray-300">Nesse ciclo foque por 25 min</p>
+        <p className="mt-10 text-center text-sm font-medium text-gray-500">Nesse ciclo foque por 25 min</p>
         <div className="mt-10">
-          <p className="text-center text-sm font-medium text-gray-300">Ciclos</p>
+          <p className="text-center text-sm font-medium text-gray-500">Ciclos</p>
           <div className="mt-4 flex justify-center items-center gap-2">
-            <div className="size-4 bg-green-800 rounded-full"></div>
-            <div className="size-4 bg-yellow-600 rounded-full"></div>
-            <div className="size-4 bg-green-800 rounded-full"></div>
+            <div className="size-4 bg-green-600 rounded-full"></div>
+            <div className="size-4 bg-yellow-500 rounded-full"></div>
+            <div className="size-4 bg-green-600 rounded-full"></div>
           </div>
         </div>
         <div className="flex justify-center">
-          <Button type="submit" className="w-full max-w-40 mx-auto mt-10 bg-green-800 hover:bg-green-900"><Play /></Button>
+          <Button type="submit" className="w-full max-w-40 mx-auto mt-10"><Play /></Button>
         </div>
       </form>
     </Form>
