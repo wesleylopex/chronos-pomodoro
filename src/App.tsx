@@ -1,5 +1,6 @@
 import Logo from './components/Logo'
 import Menu from './components/Menu'
+import CountDown from './components/CountDown'
 
 import './styles/theme.css'
 import './styles/global.css'
@@ -11,6 +12,9 @@ function App() {
         <Logo />
         <div className="mt-10">
           <Menu />
+        </div>
+        <div className="mt-10">
+          <CountDown />
         </div>
       </div>
     </div>
