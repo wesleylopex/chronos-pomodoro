@@ -4,6 +4,7 @@ import CountDown from './components/CountDown'
 
 import './styles/theme.css'
 import './styles/global.css'
+import StartForm from './components/StartForm'
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         </div>
         <div className="mt-10">
           <CountDown />
+        </div>
+        <div className="mt-10">
+          <StartForm />
         </div>
       </div>
     </div>
