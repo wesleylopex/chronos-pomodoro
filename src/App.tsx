@@ -6,7 +6,7 @@ import './styles/global.css'
 
 function App() {
   return (
-    <div className="bg-gray-800 min-h-screen text-gray-100">
+    <div className="bg-gradient-to-tl from-gray-700 to-gray-900 min-h-screen text-gray-100">
       <div className="w-full max-w-xl mx-auto px-10 md:px-0 py-10">
         <Logo />
         <div className="mt-10">
