@@ -1,3 +1,5 @@
+import type { TaskState } from './task-state'
+
 export type Task = {
   id: string
   name: string
@@ -5,5 +7,5 @@ export type Task = {
   startDate: number
   completedDate: number | null
   interruptedDate: number | null
-  type: 'work' | 'break'
+  type: keyof TaskState['config']
 }

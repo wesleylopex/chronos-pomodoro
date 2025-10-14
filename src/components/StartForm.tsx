@@ -1,26 +1,55 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+import { Play } from 'lucide-react'
 
 import { Button } from './ui/button'
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from './ui/form'
 import { Input } from './ui/input'
-import { Play } from "lucide-react"
+import type { Task } from '@/types/task'
+import { useTaskContext } from '@/contexts/TaskContext/useTaskContext'
+import { getNextCycle, getNextCycleType } from '@/utils/next-cycle'
+import { formatSecondsToMinutes } from '@/utils/format-seconds-to-minutes'
 
 const formSchema = z.object({
   task: z.string().min(1, 'Preencha a task'),
 })
 
+type FormType = z.infer<typeof formSchema>
+
 export default function StartForm() {
-  const form = useForm({
+  const { state, setState } = useTaskContext()
+  const form = useForm<FormType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      task: '',
+      task: ''
     }
   })
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log(data)
+  const nextCycle = getNextCycle(state.currentCycle)
+  const nextCycleType = getNextCycleType(nextCycle)
+
+  function onSubmit(data: FormType) {
+    const newTask: Task = {
+      id: Date.now().toString(),
+      name: data.task,
+      duration: state.config[nextCycleType],
+      startDate: Date.now(),
+      completedDate: null,
+      interruptedDate: null,
+      type: nextCycleType
+    }
+
+    const secondsRemaining = newTask.duration * 60
+
+    setState(prev => ({
+      ...prev,
+      activeTask: newTask,
+      currentCycle: nextCycle,
+      secondsRemaining,
+      formattedSecondsRemaining: formatSecondsToMinutes(secondsRemaining),
+      tasks: [...prev.tasks, newTask]
+    }))
   }
 
   return (
