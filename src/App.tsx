@@ -7,6 +7,7 @@ import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider'
 import { Toaster } from './components/ui/sonner.tsx'
 
 import Home from './pages/Home/index.tsx'
+import History from './pages/History/index.tsx'
 import NotFound from './pages/NotFound/index.tsx'
 
 import './styles/global.css'
@@ -29,6 +30,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/history" element={<History />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ScrollToTopOnRouteChange />
