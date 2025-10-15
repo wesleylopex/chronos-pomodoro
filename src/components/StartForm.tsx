@@ -12,6 +12,7 @@ import { getNextCycle, getNextCycleType } from '@/utils/next-cycle'
 import Cycles from './Cycles'
 import { TaskActionTypes } from '@/contexts/TaskContext/task-actions'
 import TipsText from './TipsText'
+import { notify } from '@/adapters/sonner-adapter'
 
 const formSchema = z.object({
   task: z.string().min(1, 'Preencha a task'),
@@ -46,10 +47,15 @@ export default function StartForm() {
       type: TaskActionTypes.START_TASK,
       payload: newTask
     })
+
+    form.reset()
+
+    notify.success('Tarefa iniciada com sucesso!')
   }
 
   function handleStopTask() {
     dispatch({ type: TaskActionTypes.STOP_TASK })
+    notify.info('Tarefa interrompida.')
   }
 
   return (

@@ -1,6 +1,8 @@
 import { ThemeProvider } from '@/components/theme-provider'
 import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider'
 
+import { Toaster } from './components/ui/sonner.tsx'
+
 import Logo from './components/Logo'
 import Menu from './components/Menu'
 import CountDown from './components/CountDown'
@@ -11,6 +13,7 @@ import './styles/global.css'
 function App() {
   return (
     <ThemeProvider defaultTheme="light">
+      <Toaster position='top-center' />
       <TaskContextProvider>
         <div className="min-h-screen">
           <div className="w-full max-w-xl mx-auto px-10 md:px-0 py-10">
