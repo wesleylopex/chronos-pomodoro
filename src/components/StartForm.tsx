@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-import { Play } from 'lucide-react'
+import { Play, Square } from 'lucide-react'
 
 import { Button } from './ui/button'
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from './ui/form'
@@ -53,6 +53,15 @@ export default function StartForm() {
     }))
   }
 
+  function handleStopTask() {
+    setState(prev => ({
+      ...prev,
+      activeTask: null,
+      secondsRemaining: 0,
+      formattedSecondsRemaining: '00:00',
+    }))
+  }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -66,6 +75,7 @@ export default function StartForm() {
                 <Input
                   placeholder="Defina a sua tarefa"
                   {...field}
+                  disabled={!!state.activeTask}
                 />
               </FormControl>
               <FormMessage />
@@ -79,7 +89,27 @@ export default function StartForm() {
           </div>
         )}
         <div className="flex justify-center">
-          <Button type="submit" className="w-full max-w-40 mx-auto mt-10"><Play /></Button>
+          {!state.activeTask && (
+            <Button
+              type="submit"
+              aria-label="Iniciar tarefa"
+              title="Iniciar tarefa"
+              className="w-full max-w-40 mx-auto mt-10"
+              key="start-task-button"
+            ><Play /></Button>
+          )}
+
+          {state.activeTask && (
+            <Button
+              type="button"
+              variant="destructive"
+              onClick={handleStopTask}
+              aria-label="Parar tarefa"
+              title="Parar tarefa"
+              className="w-full max-w-40 mx-auto mt-10"
+              key="stop-task-button"
+            ><Square /></Button>
+          )}
         </div>
       </form>
     </Form>
