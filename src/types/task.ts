@@ -2,7 +2,7 @@ import type { TaskState } from './task-state'
 
 export type Task = {
   id: string
-  name: string
+  name: string | null
   duration: number // in minutes
   startDate: number
   completedDate: number | null

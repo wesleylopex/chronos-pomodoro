@@ -11,10 +11,10 @@ export default function Home () {
         <div className="mt-10">
           <Menu />
         </div>
-        <div className="mt-10">
+        <div className="mt-16">
           <CountDown />
         </div>
-        <div className="mt-10">
+        <div className="mt-16">
           <StartForm />
         </div>
       </div>

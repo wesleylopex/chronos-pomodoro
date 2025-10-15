@@ -15,7 +15,7 @@ import TipsText from './TipsText'
 import { notify } from '@/adapters/sonner-adapter'
 
 const formSchema = z.object({
-  task: z.string().min(1, 'Preencha a task'),
+  task: z.string()
 })
 
 type FormType = z.infer<typeof formSchema>
