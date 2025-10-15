@@ -1,12 +1,12 @@
+import { BrowserRouter, Route, Routes } from 'react-router'
+
 import { ThemeProvider } from '@/components/theme-provider'
 import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider'
 
 import { Toaster } from './components/ui/sonner.tsx'
 
-import Logo from './components/Logo'
-import Menu from './components/Menu'
-import CountDown from './components/CountDown'
-import StartForm from './components/StartForm'
+import Home from './pages/Home/index.tsx'
+import NotFound from './pages/NotFound/index.tsx'
 
 import './styles/global.css'
 
@@ -15,20 +15,12 @@ function App() {
     <ThemeProvider defaultTheme="light">
       <Toaster position='top-center' />
       <TaskContextProvider>
-        <div className="min-h-screen">
-          <div className="w-full max-w-xl mx-auto px-10 md:px-0 py-10">
-            <Logo />
-            <div className="mt-10">
-              <Menu />
-            </div>
-            <div className="mt-10">
-              <CountDown />
-            </div>
-            <div className="mt-10">
-              <StartForm />
-            </div>
-          </div>
-        </div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
       </TaskContextProvider>
     </ThemeProvider>
   )

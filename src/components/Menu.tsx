@@ -1,6 +1,7 @@
 import { History, Home, Moon, Settings, Sun } from 'lucide-react'
 
 import { useTheme } from './theme-provider'
+import { Link } from 'react-router'
 
 export default function Menu() {
   const { theme, setTheme } = useTheme()
@@ -11,21 +12,21 @@ export default function Menu() {
 
   return (
     <nav className="flex items-center justify-center gap-4">
-      <a href="#" className="">
+      <Link to="/" className="">
         <div className="p-3 rounded-md bg-primary">
           <Home size={24} />
         </div>
-      </a>
-      <a href="#" className="">
+      </Link>
+      <Link to="#" className="">
         <div className="p-3 rounded-md bg-primary">
           <History size={24} />
         </div>
-      </a>
-      <a href="#" className="">
+      </Link>
+      <Link to="#" className="">
         <div className="p-3 rounded-md bg-primary">
           <Settings size={24} />
         </div>
-      </a>
+      </Link>
       <div onClick={toggleTheme} className="p-3 rounded-md bg-primary">
         {theme === 'light' ? <Sun size={24} /> : <Moon size={24} />}
       </div>
