@@ -7,5 +7,5 @@ export type Task = {
   startDate: number
   completedDate: number | null
   interruptedDate: number | null
-  type: keyof TaskState['config']
+  type: keyof TaskState['settings']
 }

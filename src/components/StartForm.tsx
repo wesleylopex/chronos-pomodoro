@@ -39,7 +39,7 @@ export default function StartForm() {
     const newTask: Task = {
       id: Date.now().toString(),
       name: data.task,
-      duration: state.config[nextCycleType],
+      duration: state.settings[nextCycleType],
       startDate: Date.now(),
       completedDate: null,
       interruptedDate: null,

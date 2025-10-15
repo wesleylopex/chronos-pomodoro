@@ -8,14 +8,14 @@ export default function TipsText() {
   const nextCycleType = getNextCycleType(nextCycle)
 
   const activeTaskTips = {
-    workTime: `Foque por ${state.config.workTime} min`,
-    shortBreakTime: `Descanse ${state.config.shortBreakTime} min`,
+    workTime: `Foque por ${state.settings.workTime} min`,
+    shortBreakTime: `Descanse ${state.settings.shortBreakTime} min`,
     longBreakTime: `Descanso longo`,
   }
 
   const noActiveTaskTips = {
-    workTime: `Próximo ciclo é de ${state.config.workTime} min`,
-    shortBreakTime: `Próximo descanso é de ${state.config.shortBreakTime} min`,
+    workTime: `Próximo ciclo é de ${state.settings.workTime} min`,
+    shortBreakTime: `Próximo descanso é de ${state.settings.shortBreakTime} min`,
     longBreakTime: `Próximo descanso será longo`
   }
   return (

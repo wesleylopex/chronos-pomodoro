@@ -6,6 +6,7 @@ export enum TaskActionTypes {
   STOP_TASK = 'STOP_TASK',
   RESET_STATE = 'RESET_STATE',
   COUNT_DOWN = 'COUNT_DOWN',
+  SAVE_SETTINGS = 'SAVE_SETTINGS'
 }
 
 export type TaskActionModel = {
@@ -20,4 +21,11 @@ export type TaskActionModel = {
   payload: { secondsRemaining: number }
 } | {
   type: TaskActionTypes.COMPLETE_TASK
+} | {
+  type: TaskActionTypes.SAVE_SETTINGS,
+  payload: {
+    workTime: number
+    shortBreakTime: number
+    longBreakTime: number
+  }
 }

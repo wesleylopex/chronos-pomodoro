@@ -8,6 +8,7 @@ import { Toaster } from './components/ui/sonner.tsx'
 
 import Home from './pages/Home/index.tsx'
 import History from './pages/History/index.tsx'
+import Settings from './pages/Settings/index.tsx'
 import NotFound from './pages/NotFound/index.tsx'
 
 import './styles/global.css'
@@ -31,6 +32,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/history" element={<History />} />
+            <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <ScrollToTopOnRouteChange />

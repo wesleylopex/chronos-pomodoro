@@ -6,7 +6,7 @@ export type TaskState = {
   formattedSecondsRemaining: string
   activeTask: Task | null
   currentCycle: number // 1 to 8
-  config: {
+  settings: {
     workTime: number
     shortBreakTime: number
     longBreakTime: number

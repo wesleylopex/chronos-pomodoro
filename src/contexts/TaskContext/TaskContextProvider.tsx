@@ -35,9 +35,7 @@ export function TaskContextProvider({ children }: { children: React.ReactNode })
         playBeepRef.current = null
       }
 
-      dispatch({
-        type: TaskActionTypes.COMPLETE_TASK
-      })
+      dispatch({ type: TaskActionTypes.COMPLETE_TASK })
       worker.terminate()
     } else {
       dispatch({
