@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from 'react-router'
+import { useEffect } from 'react'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router'
 
 import { ThemeProvider } from '@/components/theme-provider'
 import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider'
@@ -10,6 +11,16 @@ import NotFound from './pages/NotFound/index.tsx'
 
 import './styles/global.css'
 
+function ScrollToTopOnRouteChange() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+  }, [pathname])
+
+  return null
+}
+
 function App() {
   return (
     <ThemeProvider defaultTheme="light">
@@ -20,6 +31,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <ScrollToTopOnRouteChange />
         </BrowserRouter>
       </TaskContextProvider>
     </ThemeProvider>
