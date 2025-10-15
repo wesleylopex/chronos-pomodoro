@@ -9,8 +9,8 @@ import { Input } from './ui/input'
 import type { Task } from '@/types/task'
 import { useTaskContext } from '@/contexts/TaskContext/useTaskContext'
 import { getNextCycle, getNextCycleType } from '@/utils/next-cycle'
-import { formatSecondsToMinutes } from '@/utils/format-seconds-to-minutes'
 import Cycles from './Cycles'
+import { TaskActionTypes } from '@/contexts/TaskContext/task-actions'
 
 const formSchema = z.object({
   task: z.string().min(1, 'Preencha a task'),
@@ -19,7 +19,7 @@ const formSchema = z.object({
 type FormType = z.infer<typeof formSchema>
 
 export default function StartForm() {
-  const { state, setState } = useTaskContext()
+  const { state, dispatch } = useTaskContext()
   const form = useForm<FormType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,31 +41,14 @@ export default function StartForm() {
       type: nextCycleType
     }
 
-    const secondsRemaining = newTask.duration * 60
-
-    setState(prev => ({
-      ...prev,
-      activeTask: newTask,
-      currentCycle: nextCycle,
-      secondsRemaining,
-      formattedSecondsRemaining: formatSecondsToMinutes(secondsRemaining),
-      tasks: [...prev.tasks, newTask]
-    }))
+    dispatch({
+      type: TaskActionTypes.START_TASK,
+      payload: newTask
+    })
   }
 
   function handleStopTask() {
-    setState(prev => ({
-      ...prev,
-      activeTask: null,
-      secondsRemaining: 0,
-      formattedSecondsRemaining: '00:00',
-      tasks: prev.tasks.map(task => {
-        if (task.id === prev.activeTask?.id) {
-          return { ...task, interruptedDate: Date.now() }
-        }
-        return task
-      })
-    }))
+    dispatch({ type: TaskActionTypes.STOP_TASK })
   }
 
   return (
