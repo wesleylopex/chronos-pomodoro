@@ -11,6 +11,7 @@ import Menu from '@/components/Menu'
 import { getTaskType } from '@/utils/get-task-type'
 import { getTaskStatus } from '@/utils/get-task-status'
 import { TaskActionTypes } from '@/contexts/TaskContext/task-actions'
+import EmptyList from '@/components/EmptyList'
 
 export default function History () {
   const { state, dispatch } = useTaskContext()
@@ -28,38 +29,42 @@ export default function History () {
           <Menu />
         </div>
         <div className="mt-10">
-          <div className="flex justify-end">
-            <Button onClick={handleDeleteHistory} variant="outline" aria-label="Apagar histórico" title="Apagar histórico">
-              <Trash />
-            </Button>
-          </div>
-          <Table className="mt-5">
-            <TableHeader>
-              <TableRow>
-                <TableHead>Tarefa</TableHead>
-                <TableHead>Duração</TableHead>
-                <TableHead>Data</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Tipo</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {sortedTasks.map(task => (
-                <TableRow key={task.id}>
-                  <TableCell>{task.name}</TableCell>
-                  <TableCell>{task.duration} min</TableCell>
-                  <TableCell>
-                    {new Date(task.startDate).toLocaleString('pt-br', {
-                      dateStyle: 'short',
-                      timeStyle: 'short'
-                    })}
-                  </TableCell>
-                  <TableCell>{getTaskStatus(task, state.activeTask)}</TableCell>
-                  <TableCell>{getTaskType(task.type)}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          {state.tasks.length === 0 ? <EmptyList /> : (
+            <>
+              <div className="flex justify-end">
+                <Button onClick={handleDeleteHistory} variant="outline" aria-label="Apagar histórico" title="Apagar histórico">
+                  <Trash />
+                </Button>
+              </div>
+              <Table className="mt-5">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Tarefa</TableHead>
+                    <TableHead>Duração</TableHead>
+                    <TableHead>Data</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Tipo</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {sortedTasks.map(task => (
+                    <TableRow key={task.id}>
+                      <TableCell>{task.name}</TableCell>
+                      <TableCell>{task.duration} min</TableCell>
+                      <TableCell>
+                        {new Date(task.startDate).toLocaleString('pt-br', {
+                          dateStyle: 'short',
+                          timeStyle: 'short'
+                        })}
+                      </TableCell>
+                      <TableCell>{getTaskStatus(task, state.activeTask)}</TableCell>
+                      <TableCell>{getTaskType(task.type)}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </>
+          )}
         </div>
       </div>
     </div>
