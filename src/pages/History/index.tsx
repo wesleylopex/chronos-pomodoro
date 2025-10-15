@@ -10,10 +10,15 @@ import Menu from '@/components/Menu'
 
 import { getTaskType } from '@/utils/get-task-type'
 import { getTaskStatus } from '@/utils/get-task-status'
+import { TaskActionTypes } from '@/contexts/TaskContext/task-actions'
 
 export default function History () {
-  const { state } = useTaskContext()
+  const { state, dispatch } = useTaskContext()
   const sortedTasks = [...state.tasks].sort((a, b) => b.startDate - a.startDate)
+
+  function handleDeleteHistory() {
+    dispatch({ type: TaskActionTypes.RESET_STATE })
+  }
 
   return (
     <div className="min-h-screen">
@@ -24,7 +29,7 @@ export default function History () {
         </div>
         <div className="mt-10">
           <div className="flex justify-end">
-            <Button variant="outline" aria-label="Apagar histórico" title="Apagar histórico">
+            <Button onClick={handleDeleteHistory} variant="outline" aria-label="Apagar histórico" title="Apagar histórico">
               <Trash />
             </Button>
           </div>
