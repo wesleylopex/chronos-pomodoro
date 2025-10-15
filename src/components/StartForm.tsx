@@ -22,10 +22,13 @@ type FormType = z.infer<typeof formSchema>
 
 export default function StartForm() {
   const { state, dispatch } = useTaskContext()
+
+  const lastTaskName = state.tasks[state.tasks.length - 1]?.name || ''
+
   const form = useForm<FormType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      task: ''
+      task: lastTaskName
     }
   })
 
@@ -47,8 +50,6 @@ export default function StartForm() {
       type: TaskActionTypes.START_TASK,
       payload: newTask
     })
-
-    form.reset()
 
     notify.success('Tarefa iniciada com sucesso!')
   }
