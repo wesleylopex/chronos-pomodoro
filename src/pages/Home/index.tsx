@@ -1,7 +1,7 @@
 import Logo from '@/components/Logo'
 import Menu from '@/components/Menu'
 import CountDown from '@/components/CountDown'
-import StartForm from '@/components/StartForm'
+import MainForm from '@/components/MainForm'
 
 export default function Home () {
   return (
@@ -15,7 +15,7 @@ export default function Home () {
           <CountDown />
         </div>
         <div className="mt-16">
-          <StartForm />
+          <MainForm />
         </div>
       </div>
     </div>
