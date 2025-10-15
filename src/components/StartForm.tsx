@@ -59,6 +59,12 @@ export default function StartForm() {
       activeTask: null,
       secondsRemaining: 0,
       formattedSecondsRemaining: '00:00',
+      tasks: prev.tasks.map(task => {
+        if (task.id === prev.activeTask?.id) {
+          return { ...task, interruptedDate: Date.now() }
+        }
+        return task
+      })
     }))
   }
 
