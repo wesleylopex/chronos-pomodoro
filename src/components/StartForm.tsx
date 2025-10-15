@@ -11,6 +11,7 @@ import { useTaskContext } from '@/contexts/TaskContext/useTaskContext'
 import { getNextCycle, getNextCycleType } from '@/utils/next-cycle'
 import Cycles from './Cycles'
 import { TaskActionTypes } from '@/contexts/TaskContext/task-actions'
+import TipsText from './TipsText'
 
 const formSchema = z.object({
   task: z.string().min(1, 'Preencha a task'),
@@ -71,7 +72,7 @@ export default function StartForm() {
             </FormItem>
           )}
         />
-        <p className="mt-10 text-center text-sm font-medium text-gray-500">Nesse ciclo foque por 25 min</p>
+        <TipsText />
         {state.currentCycle > 0 && (
           <div className="mt-10">
             <Cycles />
