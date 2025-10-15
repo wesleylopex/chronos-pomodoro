@@ -10,6 +10,7 @@ import type { Task } from '@/types/task'
 import { useTaskContext } from '@/contexts/TaskContext/useTaskContext'
 import { getNextCycle, getNextCycleType } from '@/utils/next-cycle'
 import { formatSecondsToMinutes } from '@/utils/format-seconds-to-minutes'
+import Cycles from './Cycles'
 
 const formSchema = z.object({
   task: z.string().min(1, 'Preencha a task'),
@@ -72,14 +73,11 @@ export default function StartForm() {
           )}
         />
         <p className="mt-10 text-center text-sm font-medium text-gray-500">Nesse ciclo foque por 25 min</p>
-        <div className="mt-10">
-          <p className="text-center text-sm font-medium text-gray-500">Ciclos</p>
-          <div className="mt-4 flex justify-center items-center gap-2">
-            <div className="size-4 bg-green-600 rounded-full"></div>
-            <div className="size-4 bg-yellow-500 rounded-full"></div>
-            <div className="size-4 bg-green-600 rounded-full"></div>
+        {state.currentCycle > 0 && (
+          <div className="mt-10">
+            <Cycles />
           </div>
-        </div>
+        )}
         <div className="flex justify-center">
           <Button type="submit" className="w-full max-w-40 mx-auto mt-10"><Play /></Button>
         </div>
