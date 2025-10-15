@@ -2,7 +2,6 @@ import type { TaskState } from '@/types/task-state'
 import { TaskActionTypes, type TaskActionModel } from './task-actions'
 import { getNextCycle } from '@/utils/next-cycle'
 import { formatSecondsToMinutes } from '@/utils/format-seconds-to-minutes'
-import { initialTaskState } from './initial-task-state'
 
 export function taskReducer(state: TaskState, action: TaskActionModel): TaskState {
   switch (action.type) {
@@ -73,7 +72,14 @@ export function taskReducer(state: TaskState, action: TaskActionModel): TaskStat
       }
     }
     case TaskActionTypes.RESET_STATE: {
-      return {...initialTaskState}
+      return {
+        ...state,
+        activeTask: null,
+        secondsRemaining: 0,
+        formattedSecondsRemaining: '00:00',
+        currentCycle: 0,
+        tasks: []
+      }
     }
   }
   return state
