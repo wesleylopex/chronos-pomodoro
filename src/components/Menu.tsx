@@ -17,12 +17,12 @@ export default function Menu() {
           <Home size={24} />
         </div>
       </Link>
-      <Link to="#" className="">
+      <Link to="/history" className="">
         <div className="p-3 rounded-md bg-primary">
           <History size={24} />
         </div>
       </Link>
-      <Link to="#" className="">
+      <Link to="/settings" className="">
         <div className="p-3 rounded-md bg-primary">
           <Settings size={24} />
         </div>
