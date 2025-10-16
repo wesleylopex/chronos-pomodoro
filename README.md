@@ -3,7 +3,7 @@
   <p>Uma aplicação moderna de timer Pomodoro para gerenciar seu tempo e aumentar sua produtividade</p>
   
   <p>
-    <a href="https://chronos.vercel.app" target="_blank">
+    <a href="https://chronos-pomodoro-kappa-one.vercel.app/" target="_blank">
       <img src="https://img.shields.io/badge/🌐_Ver_Demo-Live-success?style=for-the-badge" alt="Ver Demo">
     </a>
   </p>
@@ -140,7 +140,7 @@ npm run lint     # Executa o linter
 
 A aplicação está hospedada na **Vercel** com CI/CD automático:
 
-**[🔗 Acessar Aplicação](https://chronos.vercel.app)**
+**[🔗 Acessar Aplicação](https://chronos-pomodoro-kappa-one.vercel.app/)**
 
 <br />
 
@@ -184,8 +184,7 @@ Durante o desenvolvimento deste projeto, aprofundei conhecimentos em:
 Desenvolvido com ❤️ por **Wesley Lopes**
 
 <div align="center">
-  
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://chronos.vercel.app)
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/wesleylopex)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/wesleylopex)
 
