@@ -1,4 +1,5 @@
 import type { Task } from '@/types/task'
+import type { TaskState } from '@/types/task-state'
 
 export enum TaskActionTypes {
   START_TASK = 'START_TASK',
@@ -23,9 +24,5 @@ export type TaskActionModel = {
   type: TaskActionTypes.COMPLETE_TASK
 } | {
   type: TaskActionTypes.SAVE_SETTINGS,
-  payload: {
-    workTime: number
-    shortBreakTime: number
-    longBreakTime: number
-  }
+  payload: TaskState['settings']
 }

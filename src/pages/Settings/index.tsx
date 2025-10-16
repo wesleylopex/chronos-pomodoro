@@ -29,9 +29,21 @@ import { useTaskContext } from '@/contexts/TaskContext/useTaskContext'
 import { TaskActionTypes } from '@/contexts/TaskContext/task-actions'
 
 const formSchema = z.object({
-  workTime: z.string().min(1, 'Defina o seu tempo de foco'),
-  shortBreakTime: z.string().min(1, 'Defina o seu tempo de descanso curto'),
-  longBreakTime: z.string().min(1, 'Defina o seu tempo de descanso longo')
+  workTime: z.string()
+    .min(1, 'Defina o seu tempo de foco')
+    .refine(n => +n > 10, {
+      message: 'Foco deve ser maior que 10 min'
+    }),
+  shortBreakTime: z.string()
+    .min(1, 'Defina o seu tempo de descanso curto')
+    .refine(n => +n > 0, {
+      message: 'Descanso curto deve ser maior que zero'
+    }),
+  longBreakTime: z.string()
+    .min(1, 'Defina o seu tempo de descanso longo')
+    .refine(n => +n >= 5, {
+      message: 'Descanso longo deve ser maior que 5 min'
+    })
 })
 
 type FormType = z.infer<typeof formSchema>
