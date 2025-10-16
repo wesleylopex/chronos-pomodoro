@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router'
 
-import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeProvider } from '@/contexts/ThemeContext/theme-provider'
 import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider'
 
 import { Toaster } from './components/ui/sonner.tsx'

@@ -1,6 +1,6 @@
 import { History, Home, Moon, Settings, Sun } from 'lucide-react'
 
-import { useTheme } from './theme-provider'
+import { useTheme } from '../contexts/ThemeContext/theme-provider'
 import { Link } from 'react-router'
 
 export default function Menu() {
